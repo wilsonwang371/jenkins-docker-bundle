@@ -1,6 +1,10 @@
-FROM ubuntu:18.04
+FROM quay.io/pypa/manylinux_2_24_x86_64
 
-LABEL maintainer="Bibin Wilson <bibinwilsonn@gmail.com>"
+LABEL maintainer="Wilson Wang <wilson.wang@bytedance.com>"
+
+ARG TIMEZONE="America/Los_Angeles"
+ENV TZ=${TIMEZONE}
+ENV DEBIAN_FRONTEND=noninteractive
 
 # Make sure the package repository is up to date.
 RUN apt-get update && \
@@ -17,10 +21,20 @@ RUN apt-get update && \
 # Cleanup old packages
     apt-get -qy autoremove && \
 # Add user jenkins to the image
-    adduser --quiet jenkins && \
-# Set password for the jenkins user (you may want to alter this).
-    echo "jenkins:jenkins" | chpasswd && \
-    mkdir /home/jenkins/.m2
+    useradd -m jenkins -p "jenkins" -U -s /bin/bash && \
+    mkdir -p /home/jenkins/.m2
+
+RUN apt-get -qy install python3 python3-pip
+RUN pip3 install docker
+
+# install node.js and useful packages
+ENV NODE_VERSION=14
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+SHELL ["/bin/bash", "-c"]
+RUN source /root/.nvm/nvm.sh && \
+    nvm install "${NODE_VERSION}" && \
+    nvm use "${NODE_VERSION}" && \
+    npm install --global smee-client
 
 #ADD settings.xml /home/jenkins/.m2/
 # Copy authorized keys

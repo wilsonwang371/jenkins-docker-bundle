@@ -1,0 +1,25 @@
+version: '3'
+services:
+  server:
+    build:
+      context: ./server
+      dockerfile: ./Dockerfile
+      args:
+        TIMEZONE: America/Los_Angeles
+        KEYSTORE_PASS: Hq=9.cu,qVVy}5~)
+        ROOT_PASS: q8xUY/xV8VM}6T<@
+    image: jenkins-server
+  node-debian:
+    build:
+      context: ./nodes
+      dockerfile: ./debian/Dockerfile
+      args:
+        TIMEZONE: America/Los_Angeles
+    image: jenkins-node-debian
+  node-centos:
+    build:
+      context: ./nodes
+      dockerfile: ./centos/Dockerfile
+      args:
+        TIMEZONE: America/Los_Angeles
+    image: jenkins-node-centos
