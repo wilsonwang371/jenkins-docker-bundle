@@ -48,7 +48,7 @@ RUN yes | keytool -genkey -keyalg RSA -alias selfsigned \
 COPY scripts/start.sh /usr/local/bin/start.sh
 
 # for jenkins, we only accept ssl connection
-ENTRYPOINT /usr/local/bin/start.sh --httpPort=8080 --httpsPort=8443 \
+ENTRYPOINT /usr/local/bin/start.sh --httpPort=-1 --httpsPort=8443 \
     --httpsKeyStorePassword="${KSPASS}" \
     --httpsKeyStore=/etc/ssl/jenkins_keystore.jks
 
