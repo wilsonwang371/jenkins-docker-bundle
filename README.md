@@ -53,7 +53,8 @@ Then, you can run pysmee in background.
 
 ``` bash
 nohup pysmee forward --no-cert-verify https://smee.io/<your_token> \
-    https://127.0.0.1:8443/generic-webhook-trigger/invoke > /var/log/pysmee.log 2>&1 &
+    https://127.0.0.1:8443/generic-webhook-trigger/invoke \
+    > /var/log/pysmee.log 2>&1 &
 ```
 
 Or, you can use **Webmin Web UI** to run a new process. Note: remember to click the radio that says do not wait for the process to finish.
