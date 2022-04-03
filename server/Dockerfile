@@ -21,6 +21,9 @@ RUN apt-get install -yq perl libnet-ssleay-perl openssl \
     libauthen-pam-perl libpam-runtime libio-pty-perl \
     python unzip
 
+RUN apt-get -qy install python3 python3-pip
+RUN pip3 install docker
+
 # install webmin required apt-show-versions
 RUN rm /etc/apt/apt.conf.d/docker-gzip-indexes
 RUN apt-get purge apt-show-versions
@@ -32,8 +35,10 @@ RUN apt-get install -yq apt-show-versions
 RUN apt-get install -yq npm && \
     npm install --global smee-client
 
-RUN apt-get -qy install python3 python3-pip
-RUN pip3 install docker
+RUN git clone https://github.com/wilsonwang371/pysmee.git && \
+    cd pysmee && \
+    python3 ./setup.py install && \
+    cd - && rm -rf pysmee
 
 RUN wget http://prdownloads.sourceforge.net/webadmin/webmin_1.990_all.deb
 RUN dpkg --install webmin_1.990_all.deb
