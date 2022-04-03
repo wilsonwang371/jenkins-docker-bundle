@@ -38,6 +38,9 @@ docker container run --name jenkins \
   jenkins-server:latest
 ```
 
+## Webhook For Jenkins Behind Firewall
+
+### GitLab -> Smee -> Jenkins
 If you need to forward gitlab webhook to a jenkins running behind firewall, you can use pysmee installed inside jenkins server.
 
 Firstly, you need to get a bash in the jenkins server
