@@ -1,6 +1,10 @@
-# jenkins-docker-agent
+# jenkins-docker-bundle
 
-Dokcer agent integration for Jenkins is explained in this article. https://devopscube.com/docker-containers-as-build-slaves-jenkins/
+Based on https://github.com/bibinwilson/jenkins-docker-slave.
+
+This repo contains Jenkins server and agent dockerfiles. The agents have both centos and debian based dockerfiles. 
+
+Docker agent integration for Jenkins is explained in this article. https://devopscube.com/docker-containers-as-build-slaves-jenkins/
 
 ## Build
 
