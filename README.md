@@ -47,7 +47,7 @@ docker container run --name jenkins \
   --volume /var/run/docker.sock:/var/run/docker.sock \
   --publish 8443:8443 --publish 50000:50000 \
   --publish 10000:10000 \
-  jenkins-server:latest
+  wilsonny/jenkins-server:latest
 ```
 
 ## Webhook For Jenkins Behind Firewall
