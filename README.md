@@ -1,5 +1,7 @@
 # jenkins-docker-bundle
 
+## General Design
+
 Based on https://github.com/bibinwilson/jenkins-docker-slave.
 
 Potential Users:
@@ -7,6 +9,7 @@ Potential Users:
 - Use Docker containers for each job.
 - Running Jenkins behind a firewall or running in a NAT environment but need Jenkins jobs triggered from outside.
 
+Architecture
 
 ![Architecture](docs/arch.jpg)
 
