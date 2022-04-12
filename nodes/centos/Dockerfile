@@ -7,7 +7,7 @@ ENV TZ=${TIMEZONE}
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 # Make sure the package repository is up to date.
-RUN yum update && \
+RUN yum -q -y update && \
     yum install -q -y git && \
 # Install a basic SSH server
     yum install -q -y openssh-server && \
