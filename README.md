@@ -2,6 +2,8 @@
 
 Based on https://github.com/bibinwilson/jenkins-docker-slave.
 
+![Architecture](docs/arch.jpg)
+
 This repo contains Jenkins server and node dockerfiles. The agents have both centos and debian based dockerfiles. 
 
 Docker agent integration for Jenkins is explained in this article. https://devopscube.com/docker-containers-as-build-slaves-jenkins/
